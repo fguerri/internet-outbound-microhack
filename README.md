@@ -228,7 +228,7 @@ You have negotiated with the security team a solution that strikes an acceptable
 
 To implement this policy, go to the "scripts/" directory and execute the wvd-firewall-rules.ps1 script. 
 
-  `cd internet-outbound/scripts`
+  `cd internet-outbound-microhack/scripts`
 
   `./wvd-firewall-rules.ps1 -AzFwName <your Azure Firewall name>`
 
@@ -302,7 +302,7 @@ The Azure Firewall rules can be generated automatically, by consuming the endpin
 
   ` cd`
 
-  `cd internet-outbound/scripts`
+  `cd internet-outbound-microhack/scripts`
 
 - run the Powershell script "o365-firewall-rules.ps1"
 
@@ -417,7 +417,7 @@ You are now ready to define the security rules.
 
 If you deployed your Microhack environment in Azure West Europe, a script is available to automatically create the required rules (discussed above). To run the script:
 
-  `cd internet-outbound/scripts`
+  `cd internet-outbound-microhack/scripts`
 
   `./dbricks-firewall-rules.ps1 -AzFwName <your Azure Firewall name>`
 
