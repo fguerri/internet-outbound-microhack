@@ -268,7 +268,12 @@ As the wvd-workstation runs in a subnet whose default gateway is now Azure Firew
 ![image](images/proxy-pac-setup.png)
 
 - Open a new tab and browse to https://ipinfo.io to see the public IP address you're using to access the internet. Verify that it is  your Azure Firewall's public IP. This confirms that you are reaching https://ipinfo.io directly .
-- Open a new tab and browse to https://whatismyipaddress.com. Verify that it is the public IP assigned to the onprem-proxy-vm. This confirms that you are reaching https://whatismyipaddress.com via Contoso's on-prem proxy.
+
+![image](images/azfw-public-ip.png)
+
+- Open a new tab and browse to https://ipconfig.io/json. Verify that it is the public IP assigned to the onprem-proxy-vm. This confirms that you are reaching https://ipconfig.io/json via Contoso's on-prem proxy.
+
+![image](images/on-prem-public-ip.png)
 
 The effect of your current routing and proxying policy is shown in the figure below.
 
