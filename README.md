@@ -66,7 +66,7 @@ To start the Terraform deployment, follow the steps listed below:
 
 - Choose you region for deployment (location). E.g. eastus, westeurope, etc
 
-  > If you plan to go through Challenge 4, you should deploy your Microhack environment in Azure West Europe. Some tasks in challenge 4 require configuration steps that are region-dependent. Scripts to automate those steps are provided for West Europe only. It is possible to complete Challenge 4 when the Microhack enviroment is deployed in different regions, but this will require more manual configuration steps (instructions are provided).  
+  > **WARNING IN DEPLOYMENT REGION !! :** If you plan to go through Challenge 4, you **should deploy** your Microhack environment in **Azure West Europe**. Some tasks in challenge 4 require configuration steps that are region-dependent. Scripts to automate those steps are provided for West Europe only. It is possible to complete Challenge 4 when the Microhack enviroment is deployed in different regions, but this will require more manual configuration steps (instructions are provided).  
 
 - When prompted, confirm with a **yes** to start the deployment
 
@@ -299,8 +299,6 @@ Now try and access your O365 mailbox at https://outlook.office365.com. You will 
 
 The Azure Firewall rules can be generated automatically, by consuming the endpints web service. A Powershell script is provided to do so:
 - go to the "internet-outboud-microhack/scripts/" directory
-
-  ` cd`
 
   `cd internet-outbound-microhack/scripts`
 

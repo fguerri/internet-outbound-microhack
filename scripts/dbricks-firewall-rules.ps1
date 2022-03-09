@@ -11,16 +11,25 @@ $dbfsRootBlob = (Get-AzStorageAccount | ? {$_.ResourceGroupName -eq "internet-ou
 
 $appRulesUrls = @( `
 @("$dbfsRootBlob.blob.core.windows.net",'https','dbfsroot_blob'), `
-@('tunnel.westeurope.azuredatabricks.net','https','scc_relay_1'), ` 	
-@('tunnel.westeuropec2.azuredatabricks.net','https','scc_relay_2'), ` 	
+@('tunnel.westeurope.azuredatabricks.net','https','scc_relay_1'), `
+@('tunnel.westeuropec2.azuredatabricks.net','https','scc_relay_2'), `
 @('dbartifactsprodwesteu.blob.core.windows.net','https','artifact_blob_1'), `
-@('arprodwesteua1.blob.core.windows.net','https','artifact_blob_2'), ` 	
-@('arprodwesteua2.blob.core.windows.net','https','artifact_blob_3'), ` 	
+@('arprodwesteua1.blob.core.windows.net','https','artifact_blob_2'), `
+@('arprodwesteua2.blob.core.windows.net','https','artifact_blob_3'), `
 @('arprodwesteua3.blob.core.windows.net','https','artifact_blob_4'), `
 @('arprodwesteua4.blob.core.windows.net','https','artifact_blob_5'), `
 @('arprodwesteua5.blob.core.windows.net','https','artifact_blob_6'), `
 @('arprodwesteua6.blob.core.windows.net','https','artifact_blob_7'), `
-@('dbartifactsprodnortheu.blob.core.windows.net','https','artifact_blob_8'), `
+@('arprodwesteua7.blob.core.windows.net','https','artifact_blob_8'), `
+@('arprodwesteua8.blob.core.windows.net','https','artifact_blob_9'), `
+@('arprodwesteua9.blob.core.windows.net','https','artifact_blob_10'), `
+@('arprodwesteua10.blob.core.windows.net','https','artifact_blob_11'), `
+@('arprodwesteua11.blob.core.windows.net','https','artifact_blob_12'), `
+@('arprodwesteua12.blob.core.windows.net','https','artifact_blob_13'), `
+@('arprodwesteua13.blob.core.windows.net','https','artifact_blob_14'), `
+@('arprodwesteua14.blob.core.windows.net','https','artifact_blob_15'), `
+@('arprodwesteua15.blob.core.windows.net','https','artifact_blob_16'), `
+@('dbartifactsprodnortheu.blob.core.windows.net','https','artifact_blob_17'), `
 @('dblogprodwesteurope.blob.core.windows.net','https','log_blob'), `
 @('prod-westeurope-observabilityeventhubs.servicebus.windows.net','https:9093','eventhub_1'), `
 @('prod-westeuc2-observabilityeventhubs.servicebus.windows.net','https:9093','eventhub_2'))
@@ -43,10 +52,16 @@ $dbricksApplicationRuleCollection = New-AzFirewallApplicationRuleCollection -Nam
 $netRules = @()
 $netRules += new-AzFirewallNetworkRule -Name "webapp_1" -SourceAddress $dbricksVnet -DestinationAddress "52.232.19.246/32" -DestinationPort 443 -Protocol TCP -Description "Allow access to Databricks WebApp"
 $netRules += new-AzFirewallNetworkRule -Name "webapp_2" -SourceAddress $dbricksVnet -DestinationAddress "40.74.30.80/32" -DestinationPort 443 -Protocol TCP -Description "Allow access to Databricks WebApp"
+$netRules += new-AzFirewallNetworkRule -Name "webapp_2" -SourceAddress $dbricksVnet -DestinationAddress "20.73.215.48/28" -DestinationPort 443 -Protocol TCP -Description "Allow access to Databricks Extended infra."
 Write-Host "Created network rule(s) for Databricks WebApp"
 $netRules += new-AzFirewallNetworkRule -Name "metastore_1" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeurope-prod-metastore.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
 $netRules += new-AzFirewallNetworkRule -Name "metastore_2" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeurope-prod-metastore-addl-1.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
+$netRules += new-AzFirewallNetworkRule -Name "metastore_2" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeurope-prod-metastore-addl-2.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
+$netRules += new-AzFirewallNetworkRule -Name "metastore_2" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeurope-prod-metastore-addl-3.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
 $netRules += new-AzFirewallNetworkRule -Name "metastore_3" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeuropec2-prod-metastore-0.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
+$netRules += new-AzFirewallNetworkRule -Name "metastore_3" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeuropec2-prod-metastore-1.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
+$netRules += new-AzFirewallNetworkRule -Name "metastore_3" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeuropec2-prod-metastore-2.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
+$netRules += new-AzFirewallNetworkRule -Name "metastore_3" -SourceAddress $dbricksVnet -DestinationFqdn "consolidated-westeuropec2-prod-metastore-3.mysql.database.azure.com" -DestinationPort 3306 -Protocol TCP -Description "Allow access to Databricks metastore"
 Write-Host "Created network rule(s) for Databricks Metastore"
 
 $dbricksNetworkRuleCollection = New-AzFirewallNetworkRuleCollection -Name Dbricks-NetworkRules -Priority 1257 -ActionType Allow -Rule $netRules
