@@ -273,8 +273,6 @@ As the wvd-workstation runs in a subnet whose default gateway is now Azure Firew
 
 - Open a new tab and browse to https://ipconfig.io/json. Verify that it is the public IP assigned to the onprem-proxy-vm. This confirms that you are reaching https://ipconfig.io/json via Contoso's on-prem proxy.
 
-![image](images/on-prem-public-ip.png)
-
 The effect of your current routing and proxying policy is shown in the figure below.
 
 ![image](images/internet-access-via-proxy.png)
