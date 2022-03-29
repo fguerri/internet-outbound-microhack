@@ -66,7 +66,7 @@ To start the Terraform deployment, follow the steps listed below:
 
 - Choose you region for deployment (location). E.g. eastus, westeurope, etc
 
-  > If you plan to go through Challenge 4, you should deploy your Microhack environment in Azure West Europe. Some tasks in challenge 4 require configuration steps that are region-dependent. Scripts to automate those steps are provided for West Europe only. It is possible to complete Challenge 4 when the Microhack enviroment is deployed in different regions, but this will require more manual configuration steps (instructions are provided).  
+  > **WARNING IN DEPLOYMENT REGION !! :** If you plan to go through Challenge 4, you **should deploy** your Microhack environment in **Azure West Europe**. Some tasks in challenge 4 require configuration steps that are region-dependent. Scripts to automate those steps are provided for West Europe only. It is possible to complete Challenge 4 when the Microhack enviroment is deployed in different regions, but this will require more manual configuration steps (instructions are provided).  
 
 - When prompted, confirm with a **yes** to start the deployment
 
@@ -268,7 +268,10 @@ As the wvd-workstation runs in a subnet whose default gateway is now Azure Firew
 ![image](images/proxy-pac-setup.png)
 
 - Open a new tab and browse to https://ipinfo.io to see the public IP address you're using to access the internet. Verify that it is  your Azure Firewall's public IP. This confirms that you are reaching https://ipinfo.io directly .
-- Open a new tab and browse to https://whatismyipaddress.com. Verify that it is the public IP assigned to the onprem-proxy-vm. This confirms that you are reaching https://whatismyipaddress.com via Contoso's on-prem proxy.
+
+![image](images/azfw-public-ip.png)
+
+- Open a new tab and browse to https://ipconfig.io/json. Verify that it is the public IP assigned to the onprem-proxy-vm. This confirms that you are reaching https://ipconfig.io/json via Contoso's on-prem proxy.
 
 The effect of your current routing and proxying policy is shown in the figure below.
 
@@ -299,8 +302,6 @@ Now try and access your O365 mailbox at https://outlook.office365.com. You will 
 
 The Azure Firewall rules can be generated automatically, by consuming the endpints web service. A Powershell script is provided to do so:
 - go to the "internet-outboud-microhack/scripts/" directory
-
-  ` cd`
 
   `cd internet-outbound-microhack/scripts`
 
