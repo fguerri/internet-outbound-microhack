@@ -1,0 +1,2 @@
+templates/terraform.tfstate
+templates/.terraform*
